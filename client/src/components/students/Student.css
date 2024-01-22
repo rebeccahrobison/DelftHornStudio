@@ -1,8 +1,24 @@
+.student-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.student-info-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px 50px;
+}
 .add-student-btn {
   align-self: end;
+}
+
+.edit-student-btn {
+  align-self: center;
 }
 
 .contact-info {
   display: flex;
   flex-direction: column;
 }
+
