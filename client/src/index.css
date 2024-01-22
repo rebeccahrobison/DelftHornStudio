@@ -1,13 +1,76 @@
+@font-face {
+  font-family: "Elsie";
+  src: url("../public/fonts/elsie/ElsieSwashCaps-Black.ttf")
+}
+
+@font-face {
+  font-family: "Domine";
+  src: url("../public/fonts/domine/Domine-VariableFont_wght.ttf")
+}
+
+@font-face {
+  font-family: "OpenSauce";
+  src: url("../public/fonts/opensauce/OpenSauceSans-Regular.ttf")
+}
+
+@font-face {
+  font-family: "NanumGothic";
+  src: url("../public/fonts/nanumgothic/NanumGothic-Regular.ttf");
+}
+
+:root {
+  --darkblue: #293370;
+  --midwhite: #e0e1e3;
+  --lightblue: #93a9cc;
+  --black: #090c12;
+  --blue: #5d76b1;
+  --gray: #a09f99;
+  --white: #fdf8f7;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: "NanumGothic", BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('C:\Users\rebec\workspace\csharp\DelftHornStudio\client\public\images\RoyalDelft.jpg');
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.btn-primary {
+  background-color: var(--darkblue);
+  box-shadow: 2px 2px 3px var(--blue);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--blue);
+}
+
+.btn-secondary {
+  background-color: var(--blue);
+  box-shadow: 2px 2px 3px var(--black);
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: var(--lightblue);
+}
+
+a {
+  text-decoration: none;
+  list-style-type: none;
+  color: var(--black);
+}
+
+a:hover {
+  text-decoration: none;
+  list-style-type: none;
+  color: var(--midwhite);
 }

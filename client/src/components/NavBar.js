@@ -11,6 +11,7 @@ NavbarBrand,
 NavbarToggler,
 } from "reactstrap";
 import { logout } from "../managers/authManager";
+import "./NavBar.css"
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
 const [open, setOpen] = useState(false);
@@ -18,9 +19,12 @@ const [open, setOpen] = useState(false);
 const toggleNavbar = () => setOpen(!open);
 
 return (
-    <div>
-    <Navbar color="light" light fixed="true" expand="lg">
+    <div className="navbar-container">
+    <Navbar fixed="true" expand="lg">
         <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
+            <div className="logo-img">
+                <img src="/images/DelftHornLogo.png" />
+            </div>
         Delft Horn Studio
         </NavbarBrand>
         {loggedInUser ? (
@@ -30,7 +34,7 @@ return (
             <Nav navbar></Nav>
             </Collapse>
             <Button
-            color="primary"
+            color="secondary"
             onClick={(e) => {
                 e.preventDefault();
                 setOpen(false);
@@ -47,7 +51,7 @@ return (
         <Nav navbar>
             <NavItem>
             <NavLink tag={RRNavLink} to="/login">
-                <Button color="primary">Login</Button>
+                <Button color="secondary">Login</Button>
             </NavLink>
             </NavItem>
         </Nav>
