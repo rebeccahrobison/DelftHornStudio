@@ -1,0 +1,22 @@
+.navbar-container {
+  background-color: var(--darkblue);
+}
+
+.mr-auto {
+  font-family: "Elsie";
+  font-size: 2rem;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  text-shadow: 2px 2px 2px var(--blue);
+}
+
+.logo-img img {
+  height: 60px;
+}
+
+.navbar {
+  a:hover {
+    color: var(--white);
+  }
+}

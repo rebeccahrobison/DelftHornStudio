@@ -1,0 +1,8 @@
+.add-student-btn {
+  align-self: end;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
