@@ -70,7 +70,7 @@ a {
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
   list-style-type: none;
-  color: var(--midwhite);
+  /* color: var(--darkblue); */
 }

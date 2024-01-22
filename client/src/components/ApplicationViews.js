@@ -1,9 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import "./ApplicationViews.css"
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import { StudentList } from "./students/StudentList";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./ApplicationViews.css"
+import { StudentDetails } from "./students/StudentDetails";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -13,11 +15,18 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         <Route
           index
           element={
-            <AuthorizedRoute loggedInUser={loggedInUser}>
+            <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
               <StudentList />
             </AuthorizedRoute>
           }
         />
+        <Route path="student/:id"
+          element={
+            <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+              <StudentDetails />
+            </AuthorizedRoute>
+            
+          } />
         
         <Route
           path="login"
