@@ -29,10 +29,20 @@ return (
         </NavbarBrand>
         {loggedInUser ? (
         <>
-            <NavbarToggler onClick={toggleNavbar} />
-            <Collapse isOpen={open} navbar>
-            <Nav navbar></Nav>
-            </Collapse>
+            {/* <NavbarToggler onClick={toggleNavbar} /> */}
+            {/* <Collapse isOpen={open} navbar> */}
+            <Nav navbar>
+                <NavItem>
+                    <NavLink tag={RRNavLink} to="/lessons">Lessons</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink tag={RRNavLink} to="/">Students</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink tag={RRNavLink}>Repertoire</NavLink>
+                </NavItem>
+            </Nav>
+            {/* </Collapse> */}
             <Button
             color="secondary"
             onClick={(e) => {

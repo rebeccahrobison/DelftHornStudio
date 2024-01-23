@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./ApplicationViews.css"
 import { StudentDetails } from "./students/StudentDetails";
 import { EditStudent } from "./students/EditStudent";
+import { LessonList } from "./lessons/LessonList";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -35,7 +36,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
-        
+
+        <Route path="lessons"
+          element={
+            <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+              <LessonList />
+            </AuthorizedRoute>
+          }
+        />
         <Route
           path="login"
           element={<Login setLoggedInUser={setLoggedInUser} />}

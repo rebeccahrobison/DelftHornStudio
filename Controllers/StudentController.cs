@@ -75,7 +75,7 @@ public class StudentController : ControllerBase
   }
 
   [HttpGet("{id}")]
-  // [Authorize]
+  [Authorize]
   public IActionResult GetStudentById(int id)
   {
     Student student = _dbContext.Students

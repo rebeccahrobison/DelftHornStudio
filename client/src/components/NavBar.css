@@ -24,3 +24,22 @@
 .mr-auto:hover {
   text-decoration: none;
 }
+
+.nav-link {
+  color: var(--white);
+  font-family: "Domine", serif;
+  margin: 0 20px 0 20px;
+}
+
+.nav-link:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--white);
+}
+
+.navbar-nav {
+  width: 5%;
+}
