@@ -12,6 +12,15 @@ export default function Register({ setLoggedInUser }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  //Student info
+  const [grade, setGrade] = useState("")
+  const [phone, setPhone] = useState("")
+  const [parentName, setParentName] = useState("")
+  const [parentEmail, setParentEmail] = useState("")
+  const [parentPhone, setParentPhone] = useState("")
+  const [parentAddress, setParentAddress] = useState("")
+  //End student info
+
   const [passwordMismatch, setPasswordMismatch] = useState();
   const [registrationFailure, setRegistrationFailure] = useState(false);
 
@@ -30,6 +39,14 @@ export default function Register({ setLoggedInUser }) {
         email,
         address,
         password,
+        //student info
+        grade,
+        phone,
+        parentName,
+        parentEmail,
+        parentPhone,
+        parentAddress
+        //end student info
       };
       register(newUser).then((user) => {
         if (user) {
@@ -43,7 +60,9 @@ export default function Register({ setLoggedInUser }) {
   };
 
   return (
-    <div className="container" style={{ maxWidth: "500px" }}>
+    <div className="container" 
+      // style={{ maxWidth: "500px" }}
+    >
       <h3>Sign Up</h3>
       <FormGroup>
         <Label>First Name</Label>
@@ -95,6 +114,70 @@ export default function Register({ setLoggedInUser }) {
           }}
         />
       </FormGroup>
+      
+      <FormGroup>
+        <Label>Grade</Label>
+        <Input
+          type="text"
+          value={grade}
+          onChange={(e) => {
+            setGrade(parseInt(e.target.value))
+          }}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label>Phone</Label>
+        <Input
+          type="text"
+          value={phone}
+          onChange={(e) => {
+            setPhone(e.target.value)
+          }}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label>Parent Name</Label>
+        <Input
+          type="text"
+          value={parentName}
+          onChange={(e) => {
+            setParentName(e.target.value)
+          }}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label>Parent Email</Label>
+        <Input
+          type="text"
+          value={parentEmail}
+          onChange={(e) => {
+            setParentEmail(e.target.value)
+          }}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label>Parent Phone</Label>
+        <Input
+          type="text"
+          value={parentPhone}
+          onChange={(e) => {
+            setParentPhone(e.target.value)
+          }}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label>Parent Address</Label>
+        <Input
+          type="text"
+          value={parentAddress}
+          onChange={(e) => {
+            setParentAddress(e.target.value)
+          }}
+        />
+      </FormGroup>
+
+
+
       <FormGroup>
         <Label>Password</Label>
         <Input
