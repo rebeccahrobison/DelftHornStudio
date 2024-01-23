@@ -13,10 +13,14 @@ public class StudentDTO
   public bool isActive { get; set; }
   public List<LessonDTO> Lessons { get; set; }
   public UserProfileDTO? UserProfile { get; set; }
-  public decimal Balance
+  public decimal? Balance
   {
     get
     {
+      if (Lessons == null)
+      {
+        return null;
+      }
       var completedUnpaidLessons = Lessons.Where(l => l.isCompleted && !l.isPaid);
       var balance = completedUnpaidLessons.Sum(c => c.Price);
       return balance;
