@@ -107,7 +107,9 @@ public class StudentController : ControllerBase
           FirstName = student.UserProfile.FirstName,
           LastName = student.UserProfile.LastName,
           Address = student.UserProfile.Address,
-          Email = student.UserProfile.IdentityUser.Email
+          Email = student.UserProfile.IdentityUser.Email,
+          IdentityUserId = student.UserProfile.IdentityUserId,
+          IdentityUser = student.UserProfile.IdentityUser
         },
         Lessons = student.Lessons.Select(l => new LessonDTO
         {
@@ -131,5 +133,39 @@ public class StudentController : ControllerBase
           }).ToList()
         }).ToList()
       });
+  }
+
+  [HttpPut("{id}")]
+  [Authorize]
+  public IActionResult UpdateStudent(Student student, int id)
+  {
+    Student studentToUpdate = _dbContext.Students
+      .Include(s => s.UserProfile)
+        .ThenInclude(up => up.IdentityUser)
+      .SingleOrDefault(s => s.Id == id);
+    if (studentToUpdate == null)
+    {
+      return NotFound();
+    }
+    else if (id != student.Id)
+    {
+      return BadRequest();
+    }
+
+    studentToUpdate.UserProfile.FirstName = student.UserProfile.FirstName;
+    studentToUpdate.UserProfile.LastName = student.UserProfile.LastName;
+    studentToUpdate.Grade = student.Grade;
+    studentToUpdate.UserProfile.Address = student.UserProfile.Address;
+    studentToUpdate.UserProfile.IdentityUser.Email = student.UserProfile.IdentityUser.Email;
+    studentToUpdate.Phone = student.Phone;
+    studentToUpdate.ParentName = student.ParentName;
+    studentToUpdate.ParentAddress = student.ParentAddress;
+    studentToUpdate.ParentEmail = student.ParentEmail;
+    studentToUpdate.ParentPhone = student.ParentPhone;
+    studentToUpdate.isActive = student.isActive;
+
+    _dbContext.SaveChanges();
+
+    return NoContent();
   }
 }

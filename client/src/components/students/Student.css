@@ -22,3 +22,32 @@
   flex-direction: column;
 }
 
+.edit-student-header {
+  margin: 20px 0 60px 0;
+}
+
+.edit-student-form-group {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 50%;
+}
+
+.edit-student-form-group .form-control {
+  width: 70%;
+  max-width: 1000px;
+}
+
+.edit-student-form-group .form-label {
+  width: 30%;
+} 
+
+.update-student-btn {
+  margin-top: 40px; /* Adjust the margin-bottom value as needed */
+}
+
+/* .radio-button-container {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+} */
