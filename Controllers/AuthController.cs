@@ -135,15 +135,48 @@ public class AuthController : ControllerBase
         var result = await _userManager.CreateAsync(user, password);
         if (result.Succeeded)
         {
-            _dbContext.UserProfiles.Add(new UserProfile
+            // _dbContext.UserProfiles.Add(new UserProfile
+            // {
+            //     FirstName = registration.FirstName,
+            //     LastName = registration.LastName,
+            //     Address = registration.Address,
+            //     IdentityUserId = user.Id,
+            // });
+            
+            //Changes start here
+            var userProfile = new UserProfile
             {
                 FirstName = registration.FirstName,
                 LastName = registration.LastName,
                 Address = registration.Address,
                 IdentityUserId = user.Id,
-            });
+            };
+
+            _dbContext.UserProfiles.Add(userProfile);
+            //Changes end here
+
             _dbContext.SaveChanges();
 
+
+            //Start changes here
+            var student = new Student
+        {
+            UserProfileId = userProfile.Id,
+            // Assign other properties as needed
+            // For example:
+            Grade = registration.Grade,
+            Phone = registration.Phone,
+            ParentName = registration.ParentName,
+            ParentEmail = registration.ParentEmail,
+            ParentPhone = registration.ParentPhone,
+            ParentAddress = registration.ParentAddress,
+            isActive = true, // You can set the initial isActive value here
+            Lessons = new List<Lesson>() // Create an empty list or initialize as needed
+        };
+
+        _dbContext.Students.Add(student);
+        _dbContext.SaveChanges();
+            //End changes here
             var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),

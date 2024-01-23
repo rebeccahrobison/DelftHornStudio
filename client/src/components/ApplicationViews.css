@@ -2,7 +2,7 @@
   background-color: var(--white);
   margin: 80px;
   padding: 20px;
-  height: 80vh;
+  /* height: 80vh; */
   border-radius: 10px;
   display: flex;
   flex-direction: column;

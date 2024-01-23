@@ -4,10 +4,12 @@ import { Button, Table } from "reactstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Student.css"
 import { formatCurrency } from "../utils/formatCurrency"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const StudentList = () => {
   const [students, setStudents] = useState([])
+
+  const navigate = useNavigate()
 
   const getAndSetStudents = () => {
     getStudents().then(arr => setStudents(arr))
@@ -17,10 +19,21 @@ export const StudentList = () => {
     getAndSetStudents()
   }, [])
 
+  const handleAddNewStudentBtn = (e) => {
+    e.preventDefault()
+    // console.log("button clicked")
+    navigate("student/add")
+  }
+
   return (
     <div className="container">
       <h2>Students</h2>
-      <Button className="add-student-btn" color="primary">Add New Student</Button>
+      <Button 
+        className="add-student-btn" 
+        color="primary"
+        onClick={handleAddNewStudentBtn}
+        >Add New Student
+      </Button>
       <Table className="table-container">
         <thead className="table-header">
           <tr>
