@@ -12,5 +12,5 @@ public class Student
   public string ParentAddress { get; set; }
   public bool isActive { get; set; }
   public List<Lesson> Lessons { get; set; }
-  public UserProfile? UserProfile { get; set; }
+  public UserProfile UserProfile { get; set; }
 }

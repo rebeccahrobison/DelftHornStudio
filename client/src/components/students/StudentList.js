@@ -28,12 +28,12 @@ export const StudentList = () => {
   return (
     <div className="container">
       <h2>Students</h2>
-      <Button 
+      {/* <Button 
         className="add-student-btn" 
         color="primary"
         onClick={handleAddNewStudentBtn}
         >Add New Student
-      </Button>
+      </Button> */}
       <Table className="table-container">
         <thead className="table-header">
           <tr>

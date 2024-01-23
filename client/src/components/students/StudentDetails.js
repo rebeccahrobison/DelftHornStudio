@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getStudentById } from "../../managers/studentManager"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { Button, Table } from "reactstrap"
 import { formatDate } from "../utils/formatDate"
 import { formatCurrency } from "../utils/formatCurrency"
@@ -8,10 +8,17 @@ import { formatCurrency } from "../utils/formatCurrency"
 export const StudentDetails = () => {
   const [student, setStudent] = useState({})
   const { id } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     getStudentById(id).then(obj => setStudent(obj))
   }, [id])
+
+  const handleEditStudentBtn = (e) => {
+    e.preventDefault()
+    console.log(student)
+    navigate("edit", { state: { student }})
+  }
 
   return (
     <div className="container">
@@ -89,7 +96,7 @@ export const StudentDetails = () => {
           </Table>
         </div>
       </div>
-      <Button className="edit-student-btn" color="primary">Edit Student Information</Button>
+      <Button className="edit-student-btn" color="primary" onClick={handleEditStudentBtn}>Edit Student Information</Button>
     </div>
   )
 }
