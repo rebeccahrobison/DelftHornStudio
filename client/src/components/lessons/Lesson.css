@@ -1,0 +1,64 @@
+.add-lesson-btn {
+  align-self: end;
+  margin-bottom: 20px;
+}
+
+.cover {
+  width: 50px;
+}
+
+.lesson-repertoire-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(50px, auto);
+  gap: .01rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-lesson-form {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 60%;
+  margin: 20px 0;
+}
+
+.new-lesson-form .mb-3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-btn {
+  background-color: var(--darkblue);
+  color: var(--white);
+  width: 50px;
+  font-size: .7rem;
+  margin: 1px;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.new-lesson-form .lesson-repertoire-container {
+  /* width: 50%; */
+  align-self: center;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+  background-color: var(--lightblue);
+  border-radius: 5px;
+  /* flex-direction: column; */
+  /* grid-template-columns: repeat(4, 1fr); */
+}
+
+.new-lesson-form .lesson-repertoire {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    margin: 0 15px;
+}
+
+.lesson-repertoire-container button {
+  margin: 10px 0;
+}

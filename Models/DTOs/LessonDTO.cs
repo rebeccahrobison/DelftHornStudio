@@ -8,6 +8,6 @@ public class LessonDTO
   public bool isCompleted { get; set; }
   public decimal Price { get; set; }
   public bool isPaid { get; set; }
-  public List<LessonRepertoireDTO> LessonRepertoires { get; set; }
+  public List<LessonRepertoireDTO>? LessonRepertoires { get; set; }
   public StudentDTO? Student { get; set; }
 }

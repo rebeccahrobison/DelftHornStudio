@@ -3,9 +3,13 @@ import { getLessons } from "../../managers/lessonManager"
 import { Button, Table } from "reactstrap"
 import { formatDate } from "../utils/formatDate"
 import { formatCurrency } from "../utils/formatCurrency"
+import "./Lesson.css"
+import { useNavigate } from "react-router-dom"
 
 export const LessonList = () => {
   const [lessons, setLessons] = useState([])
+
+  const navigate = useNavigate()
 
   const getAndSetLessons = () => {
     getLessons().then(arr => setLessons(arr))
@@ -17,16 +21,18 @@ export const LessonList = () => {
 
   const handleAddNewLessonBtn = (e) => {
     e.preventDefault()
+
+    navigate("add")
   }
 
   return (
     <div className="container">
       <h2>Lessons</h2>
-            <Button 
-        className="add-student-btn" 
+      <Button
+        className="add-lesson-btn"
         color="primary"
         onClick={handleAddNewLessonBtn}
-        >Add New Lesson
+      >Add New Lesson
       </Button>
       <Table>
         <thead>
@@ -49,16 +55,21 @@ export const LessonList = () => {
               <td>{l.isCompleted ? "Yes" : "No"}</td>
               <td>{formatCurrency(l.price)}</td>
               <td>{l.isPaid ? "Yes" : "No"}</td>
-              <td>
-                <ul style={{ listStyleType: 'disc', paddingLeft: '1em' }}>
-                {l.lessonRepertoires.map(lr => (
-                  <li key={lr.id} title={lr.repertoire.title}>
-                    {lr.repertoire.title.length > 35
-                    ? `${lr.repertoire.title.slice(0, 35)}...`
-                    :lr.repertoire.title}
-                  </li>
-                ))}
-                </ul>
+              <td className="lesson-repertoire-container">
+                {l.lessonRepertoires.length > 0 ?
+                  l.lessonRepertoires.map(lr => (
+                    <img 
+                      key={lr.id} 
+                      className="cover" 
+                      src={lr.repertoire.image} 
+                      alt={`Cover of ${lr.repertoire.title}`} 
+                      title={lr.repertoire.title}
+                    />
+
+                  )
+                  )
+                  : "---"
+                }
               </td>
             </tr>
           ))}

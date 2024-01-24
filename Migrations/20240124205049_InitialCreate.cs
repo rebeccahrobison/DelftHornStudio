@@ -272,8 +272,8 @@ namespace DelftHornStudio.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "dca85891-ffa3-4105-a7e0-abb0b4534835", "Admin", "admin" },
-                    { "c3aaeb97-d2ba-4a53-a521-4eea61e59b36", "f07b7e63-21c6-4c1f-969b-c96bf3acb59c", "Student", "student" }
+                    { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "9615d324-85ff-48c3-b367-131b594fb876", "Admin", "admin" },
+                    { "c3aaeb97-d2ba-4a53-a521-4eea61e59b36", "1535ac13-0a97-425c-9270-5763fd3b81d0", "Student", "student" }
                 });
 
             migrationBuilder.InsertData(
@@ -281,10 +281,10 @@ namespace DelftHornStudio.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "252608b0-3967-4296-b99e-bf93e7ee13dc", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEHL9lDZxZOKrqWQEdgf+aPPtyb4cWqNBD6I0WUPfSGQ/OJal+YhGg0/QYkPQcI1nlQ==", null, false, "97c62f00-a7f9-4e94-818b-b2dec844a2e9", false, "Administrator" },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a6f", 0, "69026514-badb-493a-91de-8d12b927f309", "abby@cooper.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEP6JYbQsztx4J4yyPBfkkOPcim7MkNhkdHJlIkdopgL6ALEop6JCkhHce7FgZwMAkQ==", null, false, "42fbc90b-5767-4898-b605-6c942c83b48a", false, "abbycooper" },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a7f", 0, "a3c53866-f089-45d5-84ac-c9bd9a552bb4", "brandon@drake.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEHjfqnBS3keJkXAQzJeoVaJSh7EUCXLMM6AV5rOKTyHG/rLzESAhdBHGAKxY2k7Tqw==", null, false, "c8953c28-79c2-4d74-9e1a-e68990051556", false, "brandondrake" },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a8f", 0, "a7001be7-52b6-4d7c-8a7e-33b58f11f49d", "tim@epps.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAECyCqTSB/rO4oQDGjm8qGVwYQJma32n234Lugzc+wwR/y9WNpZ4+XwUOIG2l7ZfuVw==", null, false, "6c9ace81-1c37-4a25-bd3c-e70cfa7e2f4b", false, "timepps" }
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "42e212d0-20f4-47d2-8093-ab8f833798fb", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEAoMpI2Wd/LunARs8CqxHfKmzYkotmqo59dV61FrejreBZOw6wvP9n8TGEf6fgzNJA==", null, false, "fa27c249-c661-4f56-83c2-e1b265ec1cbb", false, "Administrator" },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a6f", 0, "3528db28-b706-4bc3-b5ba-ad9e337b5440", "abby@cooper.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEEZnqORpZxXQxE0QBjhKn5pFNSv71m1CQ6WjwCsqyvB6f8x83i8tS0VBPFEKiEELlg==", null, false, "91020435-32d5-4b28-a0da-a2d794830574", false, "abbycooper" },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a7f", 0, "f8dd3d1d-4cd8-49db-8217-117698faea07", "brandon@drake.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAECVM3FuKCEFBOEz+sSrpq+H/12xBiXXQ5eUSCN0iRzLdtGeLAwv3yVzsYsfktd4EIQ==", null, false, "cf308678-1084-481e-971b-032817b65991", false, "brandondrake" },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a8f", 0, "c6116983-3f09-4069-aa89-1cb1794b94aa", "tim@epps.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEEzdhbEWbMdcOgnucF04elZMylr+yNYeWypGMmtHt+CdG0fXeekSo5KSJNmCEbdnKQ==", null, false, "269454f9-57e8-41f4-aced-b0bd0e5bf2b1", false, "timepps" }
                 });
 
             migrationBuilder.InsertData(
