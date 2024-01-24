@@ -8,6 +8,7 @@ import "./ApplicationViews.css"
 import { StudentDetails } from "./students/StudentDetails";
 import { EditStudent } from "./students/EditStudent";
 import { LessonList } from "./lessons/LessonList";
+import { AddLesson } from "./lessons/AddLesson";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -27,7 +28,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
               <StudentDetails />
             </AuthorizedRoute>
-          } 
+          }
         />
         <Route path="student/:id/edit"
           element={
@@ -36,14 +37,20 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
+        <Route path="lessons">
+          <Route index
+            element={
+              <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                <LessonList />
+              </AuthorizedRoute>
+            } />
+            <Route path="add" element={
+              <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                <AddLesson />
+              </AuthorizedRoute>
+            } />
+        </Route>
 
-        <Route path="lessons"
-          element={
-            <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
-              <LessonList />
-            </AuthorizedRoute>
-          }
-        />
         <Route
           path="login"
           element={<Login setLoggedInUser={setLoggedInUser} />}

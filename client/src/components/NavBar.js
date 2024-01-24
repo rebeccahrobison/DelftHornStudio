@@ -20,7 +20,10 @@ const toggleNavbar = () => setOpen(!open);
 
 return (
     <div className="navbar-container">
-    <Navbar fixed="true" expand="lg">
+    <Navbar 
+        // fixed="true" 
+        // expand="lg"
+    >
         <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
             <div className="logo-img">
                 <img src="/images/DelftHornLogo.png" />

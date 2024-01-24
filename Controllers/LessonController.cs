@@ -72,4 +72,18 @@ public class LessonController : ControllerBase
       }).ToList()
     );
   }
+
+  [HttpPost]
+  [Authorize]
+  public IActionResult PostLesson (Lesson lesson)
+  {
+
+    _dbContext.Lessons.Add(lesson);
+    _dbContext.SaveChanges();
+
+    lesson.LessonRepertoires = _dbContext.LessonRepertoires
+      .Where(lr => lr.LessonId == lesson.Id).ToList();
+
+    return Created($"/api/lesson/{lesson.Id}", lesson);
+  }
 }

@@ -467,14 +467,14 @@ namespace DelftHornStudio.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "dca85891-ffa3-4105-a7e0-abb0b4534835",
+                            ConcurrencyStamp = "9615d324-85ff-48c3-b367-131b594fb876",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b36",
-                            ConcurrencyStamp = "f07b7e63-21c6-4c1f-969b-c96bf3acb59c",
+                            ConcurrencyStamp = "1535ac13-0a97-425c-9270-5763fd3b81d0",
                             Name = "Student",
                             NormalizedName = "student"
                         });
@@ -573,13 +573,13 @@ namespace DelftHornStudio.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "252608b0-3967-4296-b99e-bf93e7ee13dc",
+                            ConcurrencyStamp = "42e212d0-20f4-47d2-8093-ab8f833798fb",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEHL9lDZxZOKrqWQEdgf+aPPtyb4cWqNBD6I0WUPfSGQ/OJal+YhGg0/QYkPQcI1nlQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAoMpI2Wd/LunARs8CqxHfKmzYkotmqo59dV61FrejreBZOw6wvP9n8TGEf6fgzNJA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "97c62f00-a7f9-4e94-818b-b2dec844a2e9",
+                            SecurityStamp = "fa27c249-c661-4f56-83c2-e1b265ec1cbb",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -587,13 +587,13 @@ namespace DelftHornStudio.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a6f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "69026514-badb-493a-91de-8d12b927f309",
+                            ConcurrencyStamp = "3528db28-b706-4bc3-b5ba-ad9e337b5440",
                             Email = "abby@cooper.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEP6JYbQsztx4J4yyPBfkkOPcim7MkNhkdHJlIkdopgL6ALEop6JCkhHce7FgZwMAkQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEZnqORpZxXQxE0QBjhKn5pFNSv71m1CQ6WjwCsqyvB6f8x83i8tS0VBPFEKiEELlg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "42fbc90b-5767-4898-b605-6c942c83b48a",
+                            SecurityStamp = "91020435-32d5-4b28-a0da-a2d794830574",
                             TwoFactorEnabled = false,
                             UserName = "abbycooper"
                         },
@@ -601,13 +601,13 @@ namespace DelftHornStudio.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a7f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a3c53866-f089-45d5-84ac-c9bd9a552bb4",
+                            ConcurrencyStamp = "f8dd3d1d-4cd8-49db-8217-117698faea07",
                             Email = "brandon@drake.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEHjfqnBS3keJkXAQzJeoVaJSh7EUCXLMM6AV5rOKTyHG/rLzESAhdBHGAKxY2k7Tqw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECVM3FuKCEFBOEz+sSrpq+H/12xBiXXQ5eUSCN0iRzLdtGeLAwv3yVzsYsfktd4EIQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c8953c28-79c2-4d74-9e1a-e68990051556",
+                            SecurityStamp = "cf308678-1084-481e-971b-032817b65991",
                             TwoFactorEnabled = false,
                             UserName = "brandondrake"
                         },
@@ -615,13 +615,13 @@ namespace DelftHornStudio.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a8f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a7001be7-52b6-4d7c-8a7e-33b58f11f49d",
+                            ConcurrencyStamp = "c6116983-3f09-4069-aa89-1cb1794b94aa",
                             Email = "tim@epps.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAECyCqTSB/rO4oQDGjm8qGVwYQJma32n234Lugzc+wwR/y9WNpZ4+XwUOIG2l7ZfuVw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEzdhbEWbMdcOgnucF04elZMylr+yNYeWypGMmtHt+CdG0fXeekSo5KSJNmCEbdnKQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6c9ace81-1c37-4a25-bd3c-e70cfa7e2f4b",
+                            SecurityStamp = "269454f9-57e8-41f4-aced-b0bd0e5bf2b1",
                             TwoFactorEnabled = false,
                             UserName = "timepps"
                         });

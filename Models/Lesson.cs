@@ -8,6 +8,6 @@ public class Lesson
   public bool isCompleted { get; set; }
   public decimal Price { get; set; }
   public bool isPaid { get; set; }
-  public List<LessonRepertoire> LessonRepertoires { get; set; }
+  public List<LessonRepertoire>? LessonRepertoires { get; set; }
   public Student? Student { get; set; }
 }
