@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { getLessonById } from "../../managers/lessonManager"
-import { useParams } from "react-router-dom"
+import { deleteLesson, getLessonById } from "../../managers/lessonManager"
+import { useNavigate, useParams } from "react-router-dom"
 import { formatDate } from "../utils/formatDate"
 import { Button, Col, FormGroup, Input, Label, Table } from "reactstrap"
 import { getRepertoires } from "../../managers/repertoireManager"
@@ -16,6 +16,7 @@ export const LessonDetails = () => {
   const [selectedRepertoires, setSelectedRepertoires] = useState([])
 
   const { id } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     getLessonById(id).then(obj => setLesson(obj))
@@ -36,6 +37,13 @@ export const LessonDetails = () => {
     if (selectedRepertoire && !selectedRepertoires.some((r) => r.id === selectedRepertoire.id)) {
       setSelectedRepertoires((prevRepertoires) => [...prevRepertoires, selectedRepertoire])
     }
+  }
+
+  const handleCancelLessonBtn = (e) => {
+    e.preventDefault()
+
+    console.log("cancel button pressed")
+    deleteLesson(lesson.id).then(() => navigate("/lessons"))
   }
 
   const updateLessonBtn = (e) => {
@@ -156,7 +164,7 @@ export const LessonDetails = () => {
 
         </tbody>
       </Table>
-      {lesson.isComplete ? "" : <Button color="secondary">Cancel Lesson</Button>}
+      {lesson.isComplete ? "" : <Button color="secondary" onClick={e => handleCancelLessonBtn(e)}>Cancel Lesson</Button>}
     </div>
   )
 }
