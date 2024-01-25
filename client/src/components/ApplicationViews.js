@@ -10,6 +10,7 @@ import { EditStudent } from "./students/EditStudent";
 import { LessonList } from "./lessons/LessonList";
 import { AddLesson } from "./lessons/AddLesson";
 import { LessonDetails } from "./lessons/LessonDetails";
+import { RepertoireList } from "./repertoires/RepertoireList";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -56,6 +57,15 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                   <LessonDetails />
                 </AuthorizedRoute>
               } />
+        </Route>
+
+        <Route path="repertoire">
+          <Route index 
+            element={
+              <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                <RepertoireList />
+              </AuthorizedRoute>
+            } />
         </Route>
 
         <Route

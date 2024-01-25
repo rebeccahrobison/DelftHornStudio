@@ -42,7 +42,7 @@ return (
                     <NavLink tag={RRNavLink} to="/lessons">Lessons</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink tag={RRNavLink}>Repertoire</NavLink>
+                    <NavLink tag={RRNavLink} to="/repertoire">Repertoire</NavLink>
                 </NavItem>
             </Nav>
             {/* </Collapse> */}
