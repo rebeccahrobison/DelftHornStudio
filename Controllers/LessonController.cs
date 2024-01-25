@@ -148,10 +148,21 @@ public class LessonController : ControllerBase
         } : null
       }).ToList()
     });
-    
-    // Console.WriteLine($"LessonDTO for Lesson Id {id}: {lessonDTO}");
+  }
 
-    // return Ok(lessonDTO);
+  [HttpDelete("{id}")]
+  [Authorize]
+  public IActionResult DeleteLesson (int id)
+  {
+    Lesson lessonToDelete = _dbContext.Lessons.SingleOrDefault(l => l.Id == id);
+    if (lessonToDelete == null)
+    {
+      return NotFound();
+    }
+     _dbContext.Lessons.Remove(lessonToDelete);
+     _dbContext.SaveChanges();
+
+     return NoContent();
   }
 
   //TODO HttpPut

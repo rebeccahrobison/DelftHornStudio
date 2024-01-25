@@ -17,3 +17,9 @@ export const addLesson = (lesson) => {
 export const getLessonById = (id) => {
   return fetch(`${_apiUrl}/${id}`).then((res) => res.json());
 }
+
+export const deleteLesson = (id) => {
+  return fetch(`${_apiUrl}/${id}`, {
+    method: "DELETE"
+  })
+}
