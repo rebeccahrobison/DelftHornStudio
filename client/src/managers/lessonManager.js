@@ -23,3 +23,13 @@ export const deleteLesson = (id) => {
     method: "DELETE"
   })
 }
+
+export const updateLesson = (lesson) => {
+  return fetch(`${_apiUrl}/${lesson.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(lesson),
+  });
+}

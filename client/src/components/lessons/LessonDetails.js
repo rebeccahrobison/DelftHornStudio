@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { deleteLesson, getLessonById } from "../../managers/lessonManager"
+import { deleteLesson, getLessonById, updateLesson } from "../../managers/lessonManager"
 import { useNavigate, useParams } from "react-router-dom"
 import { formatDate } from "../utils/formatDate"
 import { Button, Col, FormGroup, Input, Label, Table } from "reactstrap"
@@ -29,13 +29,34 @@ export const LessonDetails = () => {
       const initialRepertoires = repertoires.filter(r => initialRepertoireIds.includes(r.id));
       setSelectedRepertoires(initialRepertoires);
     }
-  }, [lesson, repertoires]);
+  }, [lesson.lessonRepertoires, repertoires]);
+
+  // useEffect(() => {
+  //   const updatedLessonRepertoires = selectedRepertoires.map(sr => ({ repertoireId: sr.id }));
+
+  //           setLesson(prevLesson => ({
+  //             ...prevLesson,
+  //             lessonRepertoires: updatedLessonRepertoires
+  //           }));
+
+
+  // }, [selectedRepertoires, lesson.lessonRepertoires])
 
   const handleRepertoireChange = (e) => {
     const selectedRepertoireId = e.target.value
     const selectedRepertoire = repertoires.find(r => r.id === parseInt(selectedRepertoireId))
-    if (selectedRepertoire && !selectedRepertoires.some((r) => r.id === selectedRepertoire.id)) {
-      setSelectedRepertoires((prevRepertoires) => [...prevRepertoires, selectedRepertoire])
+    if (selectedRepertoire) {
+      // Setting selectedRepertoires
+      const updatedSelectedRepertoires = [...selectedRepertoires, selectedRepertoire];
+      setSelectedRepertoires(updatedSelectedRepertoires);
+      
+      // Setting Lesson with objects updatedLessonRepertoires
+      // const updatedLessonRepertoires = updatedSelectedRepertoires.map(sr => ({ repertoireId: sr.id }));
+      // const stateCopy = {...lesson}
+      // stateCopy.lessonRepertoires = updatedLessonRepertoires
+      // setLesson(stateCopy)
+      // console.log(stateCopy)
+      // setLesson(prevLesson => ({ ...prevLesson, lessonRepertoires: updatedLessonRepertoires }));
     }
   }
 
@@ -46,10 +67,12 @@ export const LessonDetails = () => {
     deleteLesson(lesson.id).then(() => navigate("/lessons"))
   }
 
-  const updateLessonBtn = (e) => {
+  const handleUpdateLessonBtn = (e) => {
     e.preventDefault()
 
-    const lessonRepertoiresArray = selectedRepertoires.map(sr => ({ repertoireId: sr.id }));
+    console.log(lesson)
+    updateLesson(lesson).then(() => navigate("/lessons"));
+
   }
 
 
@@ -151,9 +174,16 @@ export const LessonDetails = () => {
                       <Button
                         color="secondary"
                         size="sm"
-                        onClick={() => (
-                          setSelectedRepertoires((prevRepertoires) => prevRepertoires.filter((r) => r.id !== sr.id))
-                        )}
+                        onClick={() => {
+                          setSelectedRepertoires(prevRepertoires => prevRepertoires.filter(r => r.id !== sr.id));
+                          const updatedLessonRepertoires = selectedRepertoires
+                            .filter(r => r.id !== sr.id)
+                            .map(sr => ({ repertoireId: sr.id }));
+                          setLesson(prevLesson => ({
+                            ...prevLesson,
+                            lessonRepertoires: updatedLessonRepertoires
+                          }));
+                        }}
                       >Remove</Button>
                     </div>
                   ))
@@ -165,6 +195,30 @@ export const LessonDetails = () => {
         </tbody>
       </Table>
       {lesson.isComplete ? "" : <Button color="secondary" onClick={e => handleCancelLessonBtn(e)}>Cancel Lesson</Button>}
+      <Button color="primary" className="update-lesson-btn" onClick={e => handleUpdateLessonBtn(e)}>Update Lesson</Button>
     </div>
   )
 }
+
+
+
+//Update lesson with new lessonRepertoires
+// const stateCopy = {...lesson}
+// console.log("State Copy before change", stateCopy)
+// stateCopy.lessonRepertoires = updatedLessonRepertoires
+// console.log("State Copy after change", stateCopy)
+// setLesson(stateCopy)
+
+// console.log(lesson.lessonRepertoires)
+// updateLesson(lesson).then(() => navigate("/lessons"))
+
+
+    // const updatedLessonRepertoires = selectedRepertoires.map(sr => ({ repertoireId: sr.id }));
+    // console.log("Updated Lesson Repertoires", updatedLessonRepertoires)
+
+
+    // setLesson(prevLesson => {
+    //   const updatedLesson = { ...prevLesson, lessonRepertoires: updatedLessonRepertoires };
+    //   console.log("Updated Lesson", updatedLesson);
+
+    // && !selectedRepertoires.some((r) => r.id === selectedRepertoire.id)
