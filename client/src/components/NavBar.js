@@ -36,10 +36,10 @@ return (
             {/* <Collapse isOpen={open} navbar> */}
             <Nav navbar>
                 <NavItem>
-                    <NavLink tag={RRNavLink} to="/lessons">Lessons</NavLink>
+                    <NavLink tag={RRNavLink} to="/">Students</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink tag={RRNavLink} to="/">Students</NavLink>
+                    <NavLink tag={RRNavLink} to="/lessons">Lessons</NavLink>
                 </NavItem>
                 <NavItem>
                     <NavLink tag={RRNavLink}>Repertoire</NavLink>

@@ -9,6 +9,7 @@ import { StudentDetails } from "./students/StudentDetails";
 import { EditStudent } from "./students/EditStudent";
 import { LessonList } from "./lessons/LessonList";
 import { AddLesson } from "./lessons/AddLesson";
+import { LessonDetails } from "./lessons/LessonDetails";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -49,6 +50,12 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                 <AddLesson />
               </AuthorizedRoute>
             } />
+            <Route path=":id"
+              element={
+                <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                  <LessonDetails />
+                </AuthorizedRoute>
+              } />
         </Route>
 
         <Route

@@ -75,7 +75,7 @@ public class LessonController : ControllerBase
 
   [HttpPost]
   [Authorize]
-  public IActionResult PostLesson (Lesson lesson)
+  public IActionResult PostLesson(Lesson lesson)
   {
 
     _dbContext.Lessons.Add(lesson);
@@ -86,4 +86,73 @@ public class LessonController : ControllerBase
 
     return Created($"/api/lesson/{lesson.Id}", lesson);
   }
+
+  [HttpGet("{id}")]
+  [Authorize]
+  public IActionResult GetLessonById(int id)
+  {
+    Lesson lesson = _dbContext.Lessons
+      .Include(l => l.Student)
+        .ThenInclude(s => s.UserProfile)
+          .ThenInclude(up => up.IdentityUser)
+      .Include(l => l.LessonRepertoires)
+        .ThenInclude(lr => lr.Repertoire)
+      .SingleOrDefault(l => l.Id == id);
+
+    if (lesson == null)
+    {
+      return NotFound();
+    }
+
+    return Ok(new LessonDTO
+    {
+      Id = lesson.Id,
+      StudentId = lesson.StudentId,
+      DateScheduled = lesson.DateScheduled,
+      isCompleted = lesson.isCompleted,
+      Price = lesson.Price,
+      isPaid = lesson.isPaid,
+      Student = new StudentDTO
+      {
+        Id = lesson.Student.Id,
+        UserProfileId = lesson.Student.UserProfileId,
+        Grade = lesson.Student.Grade,
+        Phone = lesson.Student.Phone,
+        ParentName = lesson.Student.ParentName,
+        ParentEmail = lesson.Student.ParentEmail,
+        ParentAddress = lesson.Student.ParentAddress,
+        ParentPhone = lesson.Student.ParentPhone,
+        isActive = lesson.Student.isActive,
+        UserProfile = lesson.Student?.UserProfile != null ? new UserProfileDTO
+        {
+          Id = lesson.Student.UserProfile.Id,
+          FirstName = lesson.Student.UserProfile.FirstName,
+          LastName = lesson.Student.UserProfile.LastName,
+          Address = lesson.Student.UserProfile.Address,
+          Email = lesson.Student.UserProfile.IdentityUser.Email,
+          IdentityUserId = lesson.Student.UserProfile.IdentityUserId,
+          IdentityUser = lesson.Student.UserProfile.IdentityUser
+        } : null,
+      },
+      LessonRepertoires = lesson.LessonRepertoires?.Select(lr => new LessonRepertoireDTO
+      {
+        Id = lr.Id,
+        LessonId = lr.LessonId,
+        RepertoireId = lr.RepertoireId,
+        Repertoire = lr.Repertoire != null ? new RepertoireDTO
+        {
+          Id = lr.Repertoire.Id,
+          Title = lr.Repertoire.Title,
+          Author = lr.Repertoire.Author,
+          Image = lr.Repertoire.Image
+        } : null
+      }).ToList()
+    });
+    
+    // Console.WriteLine($"LessonDTO for Lesson Id {id}: {lessonDTO}");
+
+    // return Ok(lessonDTO);
+  }
+
+  //TODO HttpPut
 }
