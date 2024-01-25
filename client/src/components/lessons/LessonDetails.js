@@ -31,17 +31,6 @@ export const LessonDetails = () => {
     }
   }, [lesson.lessonRepertoires, repertoires]);
 
-  // useEffect(() => {
-  //   const updatedLessonRepertoires = selectedRepertoires.map(sr => ({ repertoireId: sr.id }));
-
-  //           setLesson(prevLesson => ({
-  //             ...prevLesson,
-  //             lessonRepertoires: updatedLessonRepertoires
-  //           }));
-
-
-  // }, [selectedRepertoires, lesson.lessonRepertoires])
-
   const handleRepertoireChange = (e) => {
     const selectedRepertoireId = e.target.value
     const selectedRepertoire = repertoires.find(r => r.id === parseInt(selectedRepertoireId))
@@ -49,14 +38,6 @@ export const LessonDetails = () => {
       // Setting selectedRepertoires
       const updatedSelectedRepertoires = [...selectedRepertoires, selectedRepertoire];
       setSelectedRepertoires(updatedSelectedRepertoires);
-      
-      // Setting Lesson with objects updatedLessonRepertoires
-      // const updatedLessonRepertoires = updatedSelectedRepertoires.map(sr => ({ repertoireId: sr.id }));
-      // const stateCopy = {...lesson}
-      // stateCopy.lessonRepertoires = updatedLessonRepertoires
-      // setLesson(stateCopy)
-      // console.log(stateCopy)
-      // setLesson(prevLesson => ({ ...prevLesson, lessonRepertoires: updatedLessonRepertoires }));
     }
   }
 
@@ -139,16 +120,12 @@ export const LessonDetails = () => {
                   />
                 </FormGroup>
               )}
-              {/* {lesson.isComplete} */}
             </td>
           </tr>
           <tr>
             <th scope="row">Repertoire</th>
             <td>
               <FormGroup>
-                {/* <Label for="repertoireSelect">
-            Repertoire
-          </Label> */}
                 <Col sm={10}>
                   <Input
                     id="repertoireSelect"
@@ -199,26 +176,3 @@ export const LessonDetails = () => {
     </div>
   )
 }
-
-
-
-//Update lesson with new lessonRepertoires
-// const stateCopy = {...lesson}
-// console.log("State Copy before change", stateCopy)
-// stateCopy.lessonRepertoires = updatedLessonRepertoires
-// console.log("State Copy after change", stateCopy)
-// setLesson(stateCopy)
-
-// console.log(lesson.lessonRepertoires)
-// updateLesson(lesson).then(() => navigate("/lessons"))
-
-
-    // const updatedLessonRepertoires = selectedRepertoires.map(sr => ({ repertoireId: sr.id }));
-    // console.log("Updated Lesson Repertoires", updatedLessonRepertoires)
-
-
-    // setLesson(prevLesson => {
-    //   const updatedLesson = { ...prevLesson, lessonRepertoires: updatedLessonRepertoires };
-    //   console.log("Updated Lesson", updatedLesson);
-
-    // && !selectedRepertoires.some((r) => r.id === selectedRepertoire.id)

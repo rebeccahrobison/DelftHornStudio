@@ -25,11 +25,11 @@ export const LessonList = () => {
     navigate("add")
   }
 
-  const handleLessonClick = (e, id) => {
-    e.preventDefault()
+  // const handleLessonClick = (e, id) => {
+  //   e.preventDefault()
 
-    navigate(`id`)
-  }
+  //   navigate(`id`)
+  // }
 
   return (
     <div className="container">
