@@ -44,7 +44,6 @@ export const EditStudent = () => {
   return (
     <div className="container">
       <h2 className="edit-student-header">Edit Student Details</h2>
-      {/* <div className="form-container"> */}
       <FormGroup className="edit-student-form-group">
         <Label>Student First Name</Label>
         <Input
@@ -178,19 +177,7 @@ export const EditStudent = () => {
         />
         
       </FormGroup>
-      {/* <FormGroup className="radio-button-formgroup">
-        <Label>Active</Label>
-        <div className="radio-button-container">
-          <FormGroup className="radio-button-container">
-            <Input type="radio" value={student.isActive} id="yes" />
-            <Label for="yes">Yes</Label>
-          </FormGroup>
-          <FormGroup className="radio-button-container">
-            <Input type="radio" value={!student.isActive} id="no" />
-            <Label for="no">No</Label>
-          </FormGroup>
-        </div>
-      </FormGroup> */}
+
       <Button color="primary" className="update-student-btn" onClick={e => handleUpdateStudentBtn(e)}>Update Student</Button>
     </div>
   )

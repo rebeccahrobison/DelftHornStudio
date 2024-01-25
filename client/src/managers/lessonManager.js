@@ -13,3 +13,7 @@ export const addLesson = (lesson) => {
     body: JSON.stringify(lesson),
   }).then((res) => res.json);
 }
+
+export const getLessonById = (id) => {
+  return fetch(`${_apiUrl}/${id}`).then((res) => res.json());
+}

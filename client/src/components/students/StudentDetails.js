@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getStudentById } from "../../managers/studentManager"
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { Button, Table } from "reactstrap"
 import { formatDate } from "../utils/formatDate"
 import { formatCurrency } from "../utils/formatCurrency"
@@ -80,7 +80,7 @@ export const StudentDetails = () => {
               {student.lessons?.map(l =>
               (
                 <tr key={l.id}>
-                  <td>{formatDate(l.dateScheduled)}</td>
+                  <td><Link to={`/lessons/${l.id}`}>{formatDate(l.dateScheduled)}</Link></td>
                   <td style={{ color: !l.isPaid && l.isCompleted ? "red" : "black"}}>{!l.isPaid && l.isCompleted ? formatCurrency(l.price) : formatCurrency(0)}</td>
                 </tr>
               ))}

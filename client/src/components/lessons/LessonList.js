@@ -4,7 +4,7 @@ import { Button, Table } from "reactstrap"
 import { formatDate } from "../utils/formatDate"
 import { formatCurrency } from "../utils/formatCurrency"
 import "./Lesson.css"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export const LessonList = () => {
   const [lessons, setLessons] = useState([])
@@ -23,6 +23,12 @@ export const LessonList = () => {
     e.preventDefault()
 
     navigate("add")
+  }
+
+  const handleLessonClick = (e, id) => {
+    e.preventDefault()
+
+    navigate(`id`)
   }
 
   return (
@@ -49,7 +55,7 @@ export const LessonList = () => {
         <tbody>
           {lessons.map(l => (
             <tr key={l.id}>
-              <td>{formatDate(l.dateScheduled).split(',').slice(0, 2).join(',')}</td>
+              <td><Link to={`${l.id}`}>{formatDate(l.dateScheduled).split(',').slice(0, 2).join(',')}</Link></td>
               <td>{formatDate(l.dateScheduled).split(',').slice(2).join(',')}</td>
               <td>{l.student.userProfile.firstName} {l.student.userProfile.lastName}</td>
               <td>{l.isCompleted ? "Yes" : "No"}</td>

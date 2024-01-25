@@ -62,3 +62,40 @@
 .lesson-repertoire-container button {
   margin: 10px 0;
 }
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+}
+
+.detail-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.detail-title {
+  font-weight: 900;
+}
+
+.detail-info {
+  align-self: start;
+}
+
+.details-container .lesson-repertoire-container {
+  align-self: center;
+  display: flex;
+  /* justify-content: space-around; */
+  padding-top: 10px;
+  /* background-color: var(--lightblue); */
+  border-radius: 5px;
+}
+
+.details-container .lesson-repertoire {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    margin: 0 15px;
+}
