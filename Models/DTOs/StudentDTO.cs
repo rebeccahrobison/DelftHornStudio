@@ -11,7 +11,7 @@ public class StudentDTO
   public string ParentPhone { get; set; }
   public string ParentAddress { get; set; }
   public bool isActive { get; set; }
-  public List<LessonDTO> Lessons { get; set; }
+  public List<LessonDTO>? Lessons { get; set; }
   public UserProfileDTO? UserProfile { get; set; }
   public decimal? Balance
   {

@@ -152,18 +152,42 @@ public class LessonController : ControllerBase
 
   [HttpDelete("{id}")]
   [Authorize]
-  public IActionResult DeleteLesson (int id)
+  public IActionResult DeleteLesson(int id)
   {
     Lesson lessonToDelete = _dbContext.Lessons.SingleOrDefault(l => l.Id == id);
     if (lessonToDelete == null)
     {
       return NotFound();
     }
-     _dbContext.Lessons.Remove(lessonToDelete);
-     _dbContext.SaveChanges();
+    _dbContext.Lessons.Remove(lessonToDelete);
+    _dbContext.SaveChanges();
 
-     return NoContent();
+    return NoContent();
   }
 
-  //TODO HttpPut
+  [HttpPut("{id}")]
+  [Authorize]
+  public IActionResult UpdateLesson(Lesson lesson, int id)
+  {
+    Lesson lessonToUpdate = _dbContext.Lessons
+      .Include(l => l.LessonRepertoires)
+      .SingleOrDefault(l => l.Id == id);
+    if (lessonToUpdate == null)
+    {
+      return NotFound();
+    }
+    else if (id != lesson.Id)
+    {
+      return BadRequest();
+    }
+
+    lessonToUpdate.Price = lesson.Price;
+    lessonToUpdate.isPaid = lesson.isPaid;
+    lessonToUpdate.isCompleted = lesson.isCompleted;
+    lessonToUpdate.LessonRepertoires = lesson.LessonRepertoires;
+
+    _dbContext.SaveChanges();
+
+    return NoContent();
+  }
 }
