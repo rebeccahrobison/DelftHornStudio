@@ -64,7 +64,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           <Route index
             element={
               <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
-                <RepertoireList />
+                <RepertoireList loggedInUser={loggedInUser}/>
               </AuthorizedRoute>
             } />
           <Route path="add"

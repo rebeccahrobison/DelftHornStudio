@@ -13,3 +13,9 @@ export const addRepertoire = (repertoire) => {
     body: JSON.stringify(repertoire),
   }).then((res) => res.json);
 }
+
+export const deleteRepertoire = (id) => {
+  return fetch(`${_apiUrl}/${id}`, {
+    method: "DELETE"
+  })
+}

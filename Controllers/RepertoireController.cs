@@ -42,4 +42,20 @@ public class RepertoireController : ControllerBase
 
     return Created($"/api/repertoire/{repertoire.Id}", repertoire);
   }
+
+  [HttpDelete("{id}")]
+  [Authorize]
+  public IActionResult Delete(int id)
+  {
+    Repertoire repertoireToDelete = _dbContext.Repertoires.SingleOrDefault(r => r.Id == id);
+    if (repertoireToDelete == null)
+    {
+      return NotFound();
+    }
+
+    _dbContext.Remove(repertoireToDelete);
+    _dbContext.SaveChanges();
+
+    return NoContent();
+  }
 }
