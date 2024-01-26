@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import { getRepertoires } from "../../managers/repertoireManager"
+import { deleteRepertoire, getRepertoires } from "../../managers/repertoireManager"
 import "./Repertoire.css"
 import { Button } from "reactstrap"
 import { useNavigate } from "react-router-dom"
 
-export const RepertoireList = () => {
+export const RepertoireList = ({ loggedInUser }) => {
   const [repertoires, setRepertoires] = useState([])
 
   const navigate = useNavigate()
@@ -22,6 +22,12 @@ export const RepertoireList = () => {
     navigate("add")
   }
 
+  const handleDeleteBtn = (e, id) => {
+    e.preventDefault()
+    console.log("id", id)
+    deleteRepertoire(id).then(() => getAndSetRepertoires())
+  }
+
   return (
     <div className="container">
       <h2>Studio Repertoire</h2>
@@ -37,6 +43,11 @@ export const RepertoireList = () => {
                 <div className="repertoire-info title">{r.title}</div>
                 <div className="repertoire-info author">{r.author}</div>
               </div>
+              {loggedInUser.roles.includes("Admin") ? (
+                <Button size="sm" className="repertoire-delete-btn" onClick={e => handleDeleteBtn(e, r.id)}>Delete</Button>)
+                :
+                ""
+              }
             </div>
           )
         })}
