@@ -11,6 +11,7 @@ import { LessonList } from "./lessons/LessonList";
 import { AddLesson } from "./lessons/AddLesson";
 import { LessonDetails } from "./lessons/LessonDetails";
 import { RepertoireList } from "./repertoires/RepertoireList";
+import { AddRepertoire } from "./repertoires/AddRepertoire";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -46,24 +47,30 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                 <LessonList />
               </AuthorizedRoute>
             } />
-            <Route path="add" element={
+          <Route path="add" element={
+            <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+              <AddLesson />
+            </AuthorizedRoute>
+          } />
+          <Route path=":id"
+            element={
               <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
-                <AddLesson />
+                <LessonDetails />
               </AuthorizedRoute>
             } />
-            <Route path=":id"
-              element={
-                <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
-                  <LessonDetails />
-                </AuthorizedRoute>
-              } />
         </Route>
 
         <Route path="repertoire">
-          <Route index 
+          <Route index
             element={
               <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
                 <RepertoireList />
+              </AuthorizedRoute>
+            } />
+          <Route path="add"
+            element={
+              <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                <AddRepertoire />
               </AuthorizedRoute>
             } />
         </Route>

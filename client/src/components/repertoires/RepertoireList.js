@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react"
 import { getRepertoires } from "../../managers/repertoireManager"
 import "./Repertoire.css"
+import { Button } from "reactstrap"
+import { useNavigate } from "react-router-dom"
 
 export const RepertoireList = () => {
   const [repertoires, setRepertoires] = useState([])
+
+  const navigate = useNavigate()
 
   const getAndSetRepertoires = () => {
     getRepertoires().then(arr => setRepertoires(arr))
@@ -13,9 +17,15 @@ export const RepertoireList = () => {
     getAndSetRepertoires()
   }, [])
 
+  const handleAddRepertoireBtn = (e) => {
+    e.preventDefault()
+    navigate("add")
+  }
+
   return (
     <div className="container">
-      <h2>Repertoire</h2>
+      <h2>Studio Repertoire</h2>
+      <Button className="add-repertoire-btn" onClick={handleAddRepertoireBtn}>Add New Repertoire</Button>
       <div className="repertoire-list">
         {repertoires.map(r => {
           return (
