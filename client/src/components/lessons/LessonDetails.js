@@ -38,20 +38,25 @@ export const LessonDetails = () => {
       // Setting selectedRepertoires
       const updatedSelectedRepertoires = [...selectedRepertoires, selectedRepertoire];
       setSelectedRepertoires(updatedSelectedRepertoires);
+
+      const updatedLessonRepertoires = [...lesson.lessonRepertoires, {repertoireId: selectedRepertoire.id }]
+      setLesson(prevLesson => ({
+        ...prevLesson,
+        lessonRepertoires: updatedLessonRepertoires
+      }))
     }
   }
 
   const handleCancelLessonBtn = (e) => {
     e.preventDefault()
 
-    console.log("cancel button pressed")
     deleteLesson(lesson.id).then(() => navigate("/lessons"))
   }
 
   const handleUpdateLessonBtn = (e) => {
     e.preventDefault()
 
-    console.log(lesson)
+    // console.log(lesson)
     updateLesson(lesson).then(() => navigate("/lessons"));
 
   }
@@ -114,7 +119,7 @@ export const LessonDetails = () => {
                     value={lesson.isCompleted}
                     onChange={(e) => {
                       const stateCopy = { ...lesson }
-                      stateCopy.isComplete = e.target.checked
+                      stateCopy.isCompleted = e.target.checked
                       setLesson(stateCopy)
                     }}
                   />

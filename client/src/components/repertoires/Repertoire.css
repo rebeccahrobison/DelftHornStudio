@@ -58,7 +58,35 @@
   
 } */
 
+.add-repertoire-container {
+  display: flex;
+}
+
 .repertoire-info-container .title {
   font-weight: 900;
   text-align: center;
+}
+
+.add-repertoire-btn {
+  align-self: end;
+  margin: 0 10px 15px 0;
+}
+
+.new-repertoire-form .mb-3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 500px; */
+}
+
+.new-repertoire-form input {
+  width: 400px;
+  margin: 8px;
+}
+
+.add-image-cover {
+  max-width: 100%;
+  max-height: 150px;
+  align-self: center;
+  margin: 0 0 0 10px;
 }
