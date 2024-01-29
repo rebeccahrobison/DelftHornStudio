@@ -5,22 +5,63 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./ApplicationViews.css"
 import { AdminViews } from "./AdminViews";
 import { StudentViews } from "./StudentViews";
+import { AuthorizedRoute } from "./auth/AuthorizedRoute";
+import { StudentDetails } from "./students/StudentDetails";
+import { EditStudent } from "./students/EditStudent";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
 
   const views = () => {
     if (loggedInUser?.roles.includes("Admin")) {
-      return (<Route index element={
-        <AdminViews loggedInUser={loggedInUser} />
-      }
-      />)
-    } else if (loggedInUser) {
       return (
         <Route index element={
-          <StudentViews loggedInUser={loggedInUser} />
-        }
-        />)
+          <AdminViews loggedInUser={loggedInUser} />
+        } />
+      )
+    } else if (loggedInUser) {
+      return (
+        <Route path="/">
+          <Route index
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <StudentDetails loggedInUser={loggedInUser} />
+              </AuthorizedRoute>
+            } />
+          <Route path="edit"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <EditStudent loggedInUser={loggedInUser}/>
+              </AuthorizedRoute>
+            } />
+        </Route>
+
+        // <Route index element={
+
+        //     // <StudentViews loggedInUser={loggedInUser} />
+
+        //     <Routes>
+        //     {/* <Route path="/*"> */}
+        //       <Route path="/*">
+        //         <Route index 
+        //         element={
+        //           <AuthorizedRoute loggedInUser={loggedInUser}>
+        //             <StudentDetails loggedInUser={loggedInUser} />
+        //           </AuthorizedRoute>
+        //         } />
+
+        //       </Route>
+        //       <Route path="edit"
+        //         element={
+        //           <AuthorizedRoute loggedInUser={loggedInUser}>
+        //             <EditStudent />
+        //           </AuthorizedRoute>
+        //         } />
+        //     {/* </Route> */}
+        //   </Routes>
+
+        // } />
+      )
     } else {
       return (<></>)
     }
@@ -40,7 +81,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         element={<Register setLoggedInUser={setLoggedInUser} />}
       />
 
-      <Route path="*" element={<p>Whoops, nothing here...</p>} />
+      <Route path="*" element={<p style={{ backgroundColor: "white" }}>Whoops, nothing here...</p>} />
     </Routes>
 
   );
@@ -88,7 +129,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         /> */}
 
 
-              {/* {loggedInUser?.roles.includes("Admin") ? (
+{/* {loggedInUser?.roles.includes("Admin") ? (
         <Route index element={
           <AdminViews loggedInUser={loggedInUser} />
 

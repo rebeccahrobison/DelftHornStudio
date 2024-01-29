@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Button, FormGroup, Input, Label } from "reactstrap";
 import { updateStudent } from "../../managers/studentManager";
 
-export const EditStudent = () => {
+export const EditStudent = ({ loggedInUser }) => {
   const [student, setStudent] = useState({
     grade: "",
     address: "",
@@ -37,8 +37,11 @@ export const EditStudent = () => {
 
   const handleUpdateStudentBtn = (e) => {
     e.preventDefault()
-
-    updateStudent(student).then(navigate(`/student/${student.id}`))
+    if (loggedInUser.roles.includes("Admin")) {
+      updateStudent(student).then(navigate(`/student/${student.id}`))
+    } else {
+      updateStudent(student).then(navigate(`/`))
+    }
   }
 
   return (
