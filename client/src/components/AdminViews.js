@@ -14,7 +14,7 @@ import { AddRepertoire } from "./repertoires/AddRepertoire";
 export const AdminViews = ({ loggedInUser }) => {
   return (
     <Routes>
-      <Route path="/">
+      <Route path="/*">
         <Route
           index
           element={

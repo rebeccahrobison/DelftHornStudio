@@ -24,7 +24,9 @@ export const StudentDetails = ({ loggedInUser }) => {
   const handleEditStudentBtn = (e) => {
     e.preventDefault()
     console.log(student)
-    navigate("edit", { state: { student }})
+    // if (loggedInUser.roles.includes("Admin")) {
+      navigate("edit", { state: { student }})
+    // }
   }
 
   return (
