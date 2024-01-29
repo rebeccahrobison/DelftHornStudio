@@ -11,4 +11,5 @@ public class UserProfile
     public string IdentityUserId { get; set; }
 
     public IdentityUser IdentityUser { get; set; }
+    public Student? Student { get; set; }
 }

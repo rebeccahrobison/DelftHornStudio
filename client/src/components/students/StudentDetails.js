@@ -5,13 +5,20 @@ import { Button, Table } from "reactstrap"
 import { formatDate } from "../utils/formatDate"
 import { formatCurrency } from "../utils/formatCurrency"
 
-export const StudentDetails = () => {
+export const StudentDetails = ({ loggedInUser }) => {
   const [student, setStudent] = useState({})
-  const { id } = useParams()
   const navigate = useNavigate()
 
+  // const id = () => {
+  //   if (loggedInUser.roles.includes("Admin")) {
+  //     const { id } = useParams()
+  //   }
+  // }
+  const { id } = useParams()
+  
   useEffect(() => {
-    getStudentById(id).then(obj => setStudent(obj))
+    const studentId = loggedInUser.roles.includes("Admin") ? id : loggedInUser.student.id
+    getStudentById(studentId).then(obj => setStudent(obj))
   }, [id])
 
   const handleEditStudentBtn = (e) => {

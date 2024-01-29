@@ -8,6 +8,7 @@ using System.Text;
 using DelftHornStudio.Models;
 using DelftHornStudio.Models.DTOs;
 using DelftHornStudio.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace DelftHornStudio.Controllers;
 
@@ -98,7 +99,7 @@ public class AuthController : ControllerBase
     public IActionResult Me()
     {
         var identityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        var profile = _dbContext.UserProfiles.SingleOrDefault(up => up.IdentityUserId == identityUserId);
+        var profile = _dbContext.UserProfiles.Include(up => up.Student).SingleOrDefault(up => up.IdentityUserId == identityUserId);
         var roles = User.FindAll(ClaimTypes.Role).Select(r => r.Value).ToList();
         if (profile != null)
         {
@@ -111,7 +112,19 @@ public class AuthController : ControllerBase
                 IdentityUserId = identityUserId,
                 UserName = User.FindFirstValue(ClaimTypes.Name),
                 Email = User.FindFirstValue(ClaimTypes.Email),
-                Roles = roles
+                Roles = roles,
+                Student = profile.Student != null ? new StudentDTO
+                {
+                    Id = profile.Student.Id,
+                    UserProfileId = profile.Student.UserProfileId,
+                    Grade = profile.Student.Grade,
+                    Phone = profile.Student.Phone,
+                    ParentName = profile.Student.ParentName,
+                    ParentEmail = profile.Student.ParentEmail,
+                    ParentAddress = profile.Student.ParentAddress,
+                    ParentPhone = profile.Student.ParentPhone,
+                    isActive = profile.Student.isActive,
+                } : null
             };
 
             return Ok(userDto);
@@ -142,7 +155,7 @@ public class AuthController : ControllerBase
             //     Address = registration.Address,
             //     IdentityUserId = user.Id,
             // });
-            
+
             //Changes start here
             var userProfile = new UserProfile
             {
@@ -160,22 +173,22 @@ public class AuthController : ControllerBase
 
             //Start changes here
             var student = new Student
-        {
-            UserProfileId = userProfile.Id,
-            // Assign other properties as needed
-            // For example:
-            Grade = registration.Grade,
-            Phone = registration.Phone,
-            ParentName = registration.ParentName,
-            ParentEmail = registration.ParentEmail,
-            ParentPhone = registration.ParentPhone,
-            ParentAddress = registration.ParentAddress,
-            isActive = true, // You can set the initial isActive value here
-            Lessons = new List<Lesson>() // Create an empty list or initialize as needed
-        };
+            {
+                UserProfileId = userProfile.Id,
+                // Assign other properties as needed
+                // For example:
+                Grade = registration.Grade,
+                Phone = registration.Phone,
+                ParentName = registration.ParentName,
+                ParentEmail = registration.ParentEmail,
+                ParentPhone = registration.ParentPhone,
+                ParentAddress = registration.ParentAddress,
+                isActive = true, // You can set the initial isActive value here
+                Lessons = new List<Lesson>() // Create an empty list or initialize as needed
+            };
 
-        _dbContext.Students.Add(student);
-        _dbContext.SaveChanges();
+            _dbContext.Students.Add(student);
+            _dbContext.SaveChanges();
             //End changes here
             var claims = new List<Claim>
                 {
