@@ -9,6 +9,7 @@ import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import { StudentDetails } from "./students/StudentDetails";
 import { EditStudent } from "./students/EditStudent";
 import { LessonDetails } from "./lessons/LessonDetails";
+import { RepertoireList } from "./repertoires/RepertoireList";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -32,13 +33,19 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           <Route path="edit"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <EditStudent loggedInUser={loggedInUser}/>
+                <EditStudent loggedInUser={loggedInUser} />
               </AuthorizedRoute>
             } />
           <Route path="lessons/:id"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <LessonDetails loggedInUser={loggedInUser}/>
+                <LessonDetails loggedInUser={loggedInUser} />
+              </AuthorizedRoute>
+            } />
+          <Route path="repertoire"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <RepertoireList loggedInUser={loggedInUser}/>
               </AuthorizedRoute>
             } />
         </Route>
