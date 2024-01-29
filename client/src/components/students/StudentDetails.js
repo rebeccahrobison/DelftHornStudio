@@ -9,11 +9,6 @@ export const StudentDetails = ({ loggedInUser }) => {
   const [student, setStudent] = useState({})
   const navigate = useNavigate()
 
-  // const id = () => {
-  //   if (loggedInUser.roles.includes("Admin")) {
-  //     const { id } = useParams()
-  //   }
-  // }
   const { id } = useParams()
   
   useEffect(() => {
@@ -24,9 +19,9 @@ export const StudentDetails = ({ loggedInUser }) => {
   const handleEditStudentBtn = (e) => {
     e.preventDefault()
     console.log(student)
-    // if (loggedInUser.roles.includes("Admin")) {
+
       navigate("edit", { state: { student }})
-    // }
+
   }
 
   return (

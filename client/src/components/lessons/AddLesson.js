@@ -63,7 +63,9 @@ export const AddLesson = () => {
               onChange={e => setSelectedStudent(parseInt(e.target.value))}
             >
               <option value="0">Choose a student</option>
-              {students.map(s => (
+              {students
+                .filter(student => student.isActive)
+                .map(s => (
                 <option key={s.id} value={s.id}>{s.userProfile.firstName} {s.userProfile.lastName}</option>
               ))}
             </Input>

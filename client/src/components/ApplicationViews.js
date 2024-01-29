@@ -3,13 +3,15 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./ApplicationViews.css"
-import { AdminViews } from "./AdminViews";
-import { StudentViews } from "./StudentViews";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import { StudentDetails } from "./students/StudentDetails";
 import { EditStudent } from "./students/EditStudent";
 import { LessonDetails } from "./lessons/LessonDetails";
 import { RepertoireList } from "./repertoires/RepertoireList";
+import { StudentList } from "./students/StudentList";
+import { LessonList } from "./lessons/LessonList";
+import { AddLesson } from "./lessons/AddLesson";
+import { AddRepertoire } from "./repertoires/AddRepertoire";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -17,9 +19,64 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   const views = () => {
     if (loggedInUser?.roles.includes("Admin")) {
       return (
-        <Route index element={
-          <AdminViews loggedInUser={loggedInUser} />
-        } />
+        <Route path="/">
+          <Route
+            index
+            element={
+              <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                <StudentList />
+              </AuthorizedRoute>
+            } />
+          <Route path="student/:id"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <StudentDetails loggedInUser={loggedInUser} />
+              </AuthorizedRoute>
+            }
+          />
+          <Route path="student/:id/edit"
+            element={
+              <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                <EditStudent loggedInUser={loggedInUser} />
+              </AuthorizedRoute>
+            }
+          />
+
+          <Route path="lessons">
+            <Route index
+              element={
+                <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                  <LessonList />
+                </AuthorizedRoute>
+              } />
+            <Route path="add" element={
+              <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                <AddLesson />
+              </AuthorizedRoute>
+            } />
+            <Route path=":id"
+              element={
+                <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                  <LessonDetails loggedInUser={loggedInUser} />
+                </AuthorizedRoute>
+              } />
+          </Route>
+
+          <Route path="repertoire">
+            <Route index
+              element={
+                <AuthorizedRoute loggedInUser={loggedInUser}>
+                  <RepertoireList loggedInUser={loggedInUser} />
+                </AuthorizedRoute>
+              } />
+            <Route path="add"
+              element={
+                <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                  <AddRepertoire />
+                </AuthorizedRoute>
+              } />
+          </Route>
+        </Route>
       )
     } else if (loggedInUser) {
       return (
@@ -45,7 +102,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           <Route path="repertoire"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <RepertoireList loggedInUser={loggedInUser}/>
+                <RepertoireList loggedInUser={loggedInUser} />
               </AuthorizedRoute>
             } />
         </Route>
