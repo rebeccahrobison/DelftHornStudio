@@ -19,11 +19,11 @@ export const StudentList = () => {
     getAndSetStudents()
   }, [])
 
-  const handleAddNewStudentBtn = (e) => {
-    e.preventDefault()
-    // console.log("button clicked")
-    navigate("student/add")
-  }
+  // const handleAddNewStudentBtn = (e) => {
+  //   e.preventDefault()
+  //   // console.log("button clicked")
+  //   navigate("student/add")
+  // }
 
   return (
     <div className="container">

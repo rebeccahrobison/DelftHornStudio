@@ -167,19 +167,21 @@ export const EditStudent = ({ loggedInUser }) => {
           }}
         />
       </FormGroup>
-      <FormGroup switch>
-      <Label check>Active</Label>
-        <Input
-          type="switch"
-          checked={student.isActive}
-          onChange={(e) => {
-            const stateCopy = {...student}
-            stateCopy.isActive = e.target.checked
-            setStudent(stateCopy)
-          }}
-        />
-        
-      </FormGroup>
+      {loggedInUser.roles.includes("Admin") && 
+        <FormGroup switch>
+        <Label check>Active</Label>
+          <Input
+            type="switch"
+            checked={student.isActive}
+            onChange={(e) => {
+              const stateCopy = {...student}
+              stateCopy.isActive = e.target.checked
+              setStudent(stateCopy)
+            }}
+          />
+          
+        </FormGroup>
+      }
 
       <Button color="primary" className="update-student-btn" onClick={e => handleUpdateStudentBtn(e)}>Update Student</Button>
     </div>
