@@ -35,17 +35,28 @@ return (
         <>
             {/* <NavbarToggler onClick={toggleNavbar} /> */}
             {/* <Collapse isOpen={open} navbar> */}
-            <Nav navbar>
-                <NavItem>
-                    <NavLink tag={RRNavLink} to="/">Students</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink tag={RRNavLink} to="/lessons">Lessons</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink tag={RRNavLink} to="/repertoire">Repertoire</NavLink>
-                </NavItem>
-            </Nav>
+            {loggedInUser.roles.includes("Admin") ? (
+                <Nav navbar>
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="/">Students</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="/lessons">Lessons</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="/repertoire">Repertoire</NavLink>
+                    </NavItem>
+                </Nav>
+            ) : (
+                <Nav navbar>
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="/">Student</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink tag={RRNavLink} to="/repertoire">Repertoire</NavLink>
+                    </NavItem>
+                </Nav>
+            )}
             {/* </Collapse> */}
             <Button
             color="secondary"

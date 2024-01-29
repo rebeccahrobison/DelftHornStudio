@@ -8,6 +8,7 @@ import { StudentViews } from "./StudentViews";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import { StudentDetails } from "./students/StudentDetails";
 import { EditStudent } from "./students/EditStudent";
+import { LessonDetails } from "./lessons/LessonDetails";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -34,33 +35,13 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                 <EditStudent loggedInUser={loggedInUser}/>
               </AuthorizedRoute>
             } />
+          <Route path="lessons/:id"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <LessonDetails loggedInUser={loggedInUser}/>
+              </AuthorizedRoute>
+            } />
         </Route>
-
-        // <Route index element={
-
-        //     // <StudentViews loggedInUser={loggedInUser} />
-
-        //     <Routes>
-        //     {/* <Route path="/*"> */}
-        //       <Route path="/*">
-        //         <Route index 
-        //         element={
-        //           <AuthorizedRoute loggedInUser={loggedInUser}>
-        //             <StudentDetails loggedInUser={loggedInUser} />
-        //           </AuthorizedRoute>
-        //         } />
-
-        //       </Route>
-        //       <Route path="edit"
-        //         element={
-        //           <AuthorizedRoute loggedInUser={loggedInUser}>
-        //             <EditStudent />
-        //           </AuthorizedRoute>
-        //         } />
-        //     {/* </Route> */}
-        //   </Routes>
-
-        // } />
       )
     } else {
       return (<></>)
