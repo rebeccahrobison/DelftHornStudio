@@ -127,7 +127,6 @@ export const AddLesson = () => {
               <div key={sr.id} className="lesson-repertoire">
 
                 <img
-                  
                   className="cover"
                   src={sr.image}
                   alt={`Cover of ${sr.title}`}

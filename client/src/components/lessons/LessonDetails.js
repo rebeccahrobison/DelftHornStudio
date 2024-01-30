@@ -211,7 +211,7 @@ export const LessonDetails = ({ loggedInUser }) => {
       
       {loggedInUser.roles.includes("Admin") &&
         <div>
-          {lesson.isComplete ? "" : <Button color="secondary" onClick={e => handleCancelLessonBtn(e)}>Cancel Lesson</Button>}
+          {lesson.isCompleted ? "" : <Button color="secondary" onClick={e => handleCancelLessonBtn(e)}>Cancel Lesson</Button>}
           <Button color="primary" className="update-lesson-btn" onClick={e => handleUpdateLessonBtn(e)}>Update Lesson</Button>
         </div>
       }
