@@ -1,0 +1,11 @@
+#video-container {
+  width: 200px;
+  overflow: hidden;
+  display: block;
+  height: 200px;
+  margin-top: 10px;
+}
+
+video {
+  margin-left: -220px;
+}
