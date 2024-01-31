@@ -18,7 +18,7 @@ export const StudentDetails = ({ loggedInUser }) => {
 
   const handleEditStudentBtn = (e) => {
     e.preventDefault()
-    console.log(student)
+    // console.log(student)
 
       navigate("edit", { state: { student }})
 
